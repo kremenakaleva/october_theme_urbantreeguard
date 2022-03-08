@@ -24,7 +24,7 @@ if(get('download')){
 $file = File::find((int)get('download'));
 $file_name = $file->getLocalPath();
 $ext= $file->getExtension();
-$recordName = $file->file_name ? $file->file_name : 'RESTCOAST_file.'.$ext;
+$recordName = $file->file_name ? $file->file_name : 'UrbanTreeGuard_file.'.$ext;
 
 
 if (file_exists($file_name)) {
@@ -53,7 +53,7 @@ return Redirect::back();
 
 {% component 'session' %}
 <div class="container">
-	<h1 class="display-1">Internal repository</h1>
+	<h1 class="page_heading internal">Internal repository</h1>
 
 	{% component 'internalrepository' %}
 

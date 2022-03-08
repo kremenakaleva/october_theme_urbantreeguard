@@ -1,3 +1,5 @@
+$(window).scroll(animateNumbers);
+var viewed = false;
 
 var documentHasScroll = function() {
     return window.innerHeight <= document.body.offsetHeight;
@@ -26,7 +28,6 @@ $(document).ready(function() {
 		divs.slice(i, i+2).wrapAll( '<div class="col-xs" />');
 	}
 
-
 	var headerNavbar = $('#headerNavbar');
 	var width100 = $('.width100');
 	var innerWidth = $('body').innerWidth();
@@ -34,28 +35,180 @@ $(document).ready(function() {
 	width100.width(innerWidth);
 
 
-	$('body').on('click', '.work_packages .accordion-toggle', function () {
+	$('body').on('click', '.work_packages .accordion-toggle, .pilots .accordion-toggle', function () {
 		if ($(this).next(".accordion-content").is(':visible')) {
 			$(this).next(".accordion-content").slideUp(300);
-			$(this).children(".plusminus").addClass('plus');
-			$(this).children(".plusminus").removeClass('minus');
+			$(this).children().find(".plusminus").text('+');
+			$(this).children(".plusminus").html('<span class="plus"></span>');
 		} else {
 			$(this).next(".accordion-content").slideDown(300);
-			$(this).children(".plusminus").removeClass('plus');
-			$(this).children(".plusminus").addClass('minus');
+			$(this).children().find(".plusminus").text('-');
+			$(this).children(".plusminus").html('<span class="minus"></span>');
 		}
 	});
 
 	$('.nav.nav-pills').removeAttr('id');
 
+	var count = $("h1").text().length;
 
-	$('.contact_info .card-body .body').each(function(){
-		var countParagraphs = $(this).find('p').length;
-		if(countParagraphs > 1){
-			$(this).find('p').first().append('<div class="dorsal">Read more</div>');
-			$(this).find('p:not(:first)').wrapAll( "<div class='toogle-contact-paragraphs'></div>" )
+	//
+	// $('.content-wrapper.news .content img').each(function(){
+	// 	$(this).attr('id', 'myImg');
+	// 	$(this).addClass('myImages');
+	// });
+	//
+	// $('.content-wrapper.news').after('<div id=\"myModal\" class=\"modal\">\n' +
+	// 	'  <span class=\"close_modal\">&times;</span>\n' +
+	// 	'  <img class=\"modal-content\" id=\"img01\">\n' +
+	// 	'  <div id=\"caption\"></div>\n' +
+	// 	'</div>');
+
+
+	$('.tabs').each(function(){
+		// For each set of tabs, we want to keep track of
+		// which tab is active and its associated content
+		var $active, $content, $links = $(this).find('a');
+		var speed = "fast";
+		var activeTab = $(location.hash);
+		// If the location.hash matches one of the links, use that as the active tab.
+		// If no match is found, use the first link as the initial active tab.
+		$active = $($links.filter("[href=\'"+location.hash+"\']")[0] || $links[0]);
+
+		$active.addClass('active');
+
+		$content = $($active[0].hash);
+
+		// Hide the remaining content
+		$links.not($active).each(function () {
+			$(this.hash).hide();
+		});
+
+		if(activeTab.length){
+			$content.slideDown(speed);
+			//scroll to element
+			$('html, body').animate({
+				scrollTop:  activeTab.offset().top - $('header').height()
+			}, speed);
 		}
 
+		// Bind the click event handler
+		$(this).find("a").click(function (e) {
+			if($(this).hasClass('active')) {
+				$content.slideDown({
+					scrollTop: $content.offset().top - $('header').height()
+				}, speed);
+				var screenSize = getScreenSize();
+				if (screenSize.width < 800) {
+					// scroll to element
+					$('html, body').animate({
+						scrollTop: $content.offset().top - $('header').height() + 300  // mobile
+					}, speed);
+				}else{
+					//scroll to element icons top
+					$('html, body').animate({
+						scrollTop:  $content.offset().top - $('header').height() + 300
+					}, speed);
+				}
+				e.preventDefault();
+				return false;
+			}
+			// Make the old tab inactive.
+			$active.removeClass('active');
+			// $content.slideUp({
+			// 	scrollTop: $content.offset().top - $('header').height() - $('.left_sidebar').height()
+			// }, speed);
+			$content.hide();
+
+			// Update the variables with the new link and content
+			$active = $(this);
+			$content = $(this.hash);
+
+			location.hash = $active[0].hash;
+
+			// Make the tab active.
+			$active.addClass('active');
+			$content.slideDown({
+				scrollTop: $content.offset().top - $('header').height()
+			}, speed);
+			// var screenSize = getScreenSize();
+			// if (screenSize.width < 800) {
+			// 	// scroll to element
+			// 	$('html, body').animate({
+			// 		scrollTop: $content.offset().top - $('header').height() + 300 // mobile
+			// 	}, speed);
+			// }else{
+			// 	//scroll to element icons top
+			// 	$('html, body').animate({
+			// 		scrollTop:  $content.offset().top - $('header').height() + 300
+			// 	}, speed);
+			// }
+
+			// Prevent the anchor\'s default click action
+			e.preventDefault();
+		});
+	});
+
+
+
+	$('.numbers').attr('data-aos', 'fade-up');
+	$('.mission .container').attr('data-aos', 'fade-up');
+	$('.vision .container').attr('data-aos', 'fade-up');
+	$('.goals .container').attr('data-aos', 'fade-up');
+	$('.card-img-top').attr('data-aos', 'fade-up');
+	$('.logo-container').attr('data-aos', 'fade-up');
+	$('.subscribe-items a').attr('data-aos', 'fade-up');
+	$('.icons a').attr('data-aos', 'fade-up');
+	$('.about h1.display-1').attr('data-aos', 'fade-up');
+	$('h2.underline').attr('data-aos', 'fade-up');
+	$('.news_column').attr('data-aos', 'fade-up');
+	$('.timeline-item').attr('data-aos', 'fade-up');
+
+	// about page
+
+	$('.about img').attr('data-aos', 'fade-up');
+
+	$('.country_map').attr('data-aos', 'fade-up');
+	$('.partner-item').attr('data-aos', 'fade-up');
+
+	// media
+	$('.flyer_image_container img').attr('data-aos', 'fade-up');
+	$('.broshure_and_poster img').attr('data-aos', 'fade-up');
+	$('.card_image_container').attr('data-aos', 'fade-up');
+	$('.coordinator_image').attr('data-aos', 'fade-up');
+
+
+// 	// create references to the modal...
+// 	var modal = document.getElementById('myModal');
+// // to all images -- note I'm using a class!
+// 	var images = document.getElementsByClassName('myImages');
+// // the image in the modal
+// 	var modalImg = document.getElementById("img01");
+// // and the caption in the modal
+// 	var captionText = document.getElementById("caption");
+//
+// // Go through all of the images with our custom class
+// 	for (var i = 0; i < images.length; i++) {
+// 		var img = images[i];
+// 		// and attach our click listener for this image.
+// 		img.onclick = function(evt) {
+// 			modal.style.display = "block";
+// 			modalImg.src = this.src;
+// 			captionText.innerHTML = this.alt;
+// 		}
+// 	}
+//
+// 	var span = document.getElementsByClassName("close_modal")[0];
+//
+// 	span.onclick = function() {
+// 		modal.style.display = "none";
+// 	}
+
+	$('.partners .partner_description, .partners .list-item-body').each(function(){
+		var countParagraphs = $(this).find('p').length;
+		if(countParagraphs > 1) {
+			$(this).find('p').first().append('<div class="dorsal">Read more</div>');
+			$(this).find('p:not(:first)').wrapAll("<div class='toogle-contact-paragraphs'></div>")
+		}
 	});
 
 	$('.dorsal').click(function () {
@@ -70,46 +223,47 @@ $(document).ready(function() {
 
 	});
 
+	$('.see_all_partners_link').hide();
 
-	$('.content-wrapper.news .content img').each(function(){
-		$(this).attr('id', 'myImg');
-		$(this).addClass('myImages');
-	});
-
-	$('.content-wrapper.news').after('<div id=\"myModal\" class=\"modal\">\n' +
-		'  <span class=\"close_modal\">&times;</span>\n' +
-		'  <img class=\"modal-content\" id=\"img01\">\n' +
-		'  <div id=\"caption\"></div>\n' +
-		'</div>');
-
-
-	// create references to the modal...
-	var modal = document.getElementById('myModal');
-// to all images -- note I'm using a class!
-	var images = document.getElementsByClassName('myImages');
-// the image in the modal
-	var modalImg = document.getElementById("img01");
-// and the caption in the modal
-	var captionText = document.getElementById("caption");
-
-// Go through all of the images with our custom class
-	for (var i = 0; i < images.length; i++) {
-		var img = images[i];
-		// and attach our click listener for this image.
-		img.onclick = function(evt) {
-			modal.style.display = "block";
-			modalImg.src = this.src;
-			captionText.innerHTML = this.alt;
-		}
-	}
-
-	var span = document.getElementsByClassName("close_modal")[0];
-
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
 
 });
+
+
+function createTippy(element, options) {
+	return new Promise(resolve => {
+		tippy(element, Object.assign({}, {
+			allowHTML: true,
+			interactive: true,
+			animation: 'scale',
+			theme: 'light',
+		}, options));
+		resolve();
+	});
+}
+//
+// function getScreenSize() {
+// 	var myHeight = 0;
+// 	var myWidth = 0;
+// 	if (window.innerWidth && window.innerHeight) {
+// 		// Netscape & Mozilla
+// 		myHeight = window.innerHeight;
+// 		myWidth = window.innerWidth;
+// 	} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+// 		// IE > 6
+// 		myHeight = document.documentElement.clientHeight;
+// 		myWidth = document.documentElement.clientWidth;
+// 	} else if (document.body.offsetWidth && document.body.offsetHeight) {
+// 		// IE = 6
+// 		myHeight = document.body.offsetHeight;
+// 		myWidth = document.body.offsetWidth;
+// 	} else if (document.body.clientWidth && document.body.clientHeight) {
+// 		// IE < 6
+// 		myHeight = document.body.clientHeight;
+// 		myWidth = document.body.clientWidth;
+// 	}
+//
+// 	return {'width': myWidth, 'height': myHeight};
+// }
 
 
 
@@ -146,20 +300,93 @@ function appendSignOut() {
     });
 }
 
-// function initAccordeon(pElem) {
-// 	$('body').on('click', '.accordion-toggle', function () {
-// 		if ($(this).next(".accordion-content").is(':visible')) {
-// 			$(this).next(".accordion-content").slideUp(300);
-// 			$(this).children(".plusminus").html('<span class="plus"></span>');
-// 		} else {
-// 			$(this).next(".accordion-content").slideDown(300);
-// 			$(this).children(".plusminus").html('<span class="minus"></span>');
-// 		}
-// 	});
-// }
+function appendSearchAndSocialMedia(){
+	var liSearch = '<li class="nav-item search_field"><a href=\"javascript: void(0);\" onclick=\"showSearchForm();\"></a></li>';
+	// var liSocial = '<li class="nav-item social"><a href=\"https://www.facebook.com/BiCIKLProjectH2020\" target=\"_blank\" class=\"pr p-facebook big\" target=\"_blank\"></a><a href=\"https://twitter.com/BiCIKL_H2020\" target=\"_blank\" class=\"pr p-twitter big\" target=\"_blank\"></a></li>';
+	var menu = $('#menuToggle');
+	// menu.find('>ul').append(liSearch).append(liSocial);
+	menu.find('>ul').append(liSearch);
+}
+
+function redirectAndRefresh(url){
+	$(".tabs a").each(function() {
+		this.href = window.location.hash;
+	});
+	window.open(url, '_blank');
+	location.reload();
+}
 
 function isBreakpointLarge() {
     return window.innerWidth <= 991;
+}
+
+function showSearchForm(){
+	$('#layout-header').toggleClass('full-width');
+	$('#search').toggle();
+}
+
+function requestFormLibrary() {
+	$('#mylibraryForm').on('click', 'a', function () {
+		var $form = $(this).closest('form');
+		$form.request();
+	})
+}
+
+function requestFormPartners() {
+	$('#myPartnersForm').on('click', 'a', function () {
+		var $form = $(this).closest('form');
+		$form.request();
+	})
+}
+
+function isScrolledIntoView(elem) {
+	var docViewTop = $(window).scrollTop();
+	var docViewBottom = docViewTop + $(window).height();
+
+	if($(elem).height()){
+		var elemTop = $(elem).offset().top;
+		var elemBottom = elemTop + $(elem).height();
+
+		return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	}
+	return;
+
+}
+
+function animateNumbersOld() {
+	if (isScrolledIntoView($(".numbers")) && !viewed) {
+		viewed = true;
+		$('.count').each(function () {
+			$(this).prop('Counter',0).animate({
+				Counter: $(this).text()
+			}, {
+				duration: 1500,
+				easing: 'swing',
+				step: function (now) {
+					$(this).text(Math.ceil(now));
+				}
+			});
+		});
+	}
+}
+
+
+function animateNumbers() {
+	if (isScrolledIntoView($(".numbers")) && !viewed) {
+		viewed = true;
+		$('.count').each(function () {
+			var size = $(this).text().split(".")[1] ? $(this).text().split(".")[1].length : 0;
+			$(this).prop('Counter',0).animate({
+				Counter: $(this).text()
+			}, {
+				duration: 1800,
+				easing: 'swing',
+				step: function (now) {
+					$(this).text(parseFloat(now).toFixed(size));
+				}
+			});
+		});
+	}
 }
 
 function init() {
@@ -194,6 +421,9 @@ function init() {
                 });
             }
         }
+		appendSearchAndSocialMedia()
+		requestFormLibrary()
+		// requestFormPartners()
         // keepFooter(documentHasScroll());
 
     });

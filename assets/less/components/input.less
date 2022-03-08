@@ -18,22 +18,21 @@
         outline: none;
     }
 
-    &.search {
-        background-color: @transparent !important;
+    &.search_input {
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
+
         .border-bottom();
         .border-top();
         .border-left();
         color: @primary-color;
         padding: 0px 10px;
-        height: 32px;
-        width: 150px;
+        height: 43px;
         box-sizing: border-box;
         font-size: 14px;
         .breakpoint-small-down({
-          height: 45px;
-        width: 100%;
+          background: @white-color;
+          border-right: 1px solid @white-color;
         });
     }
     &.documents_search {
