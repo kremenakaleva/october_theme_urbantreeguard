@@ -27,8 +27,12 @@
           max-width: 32%!important;
           display: flex;
           flex-direction: column;
-
-          box-shadow: 0 6px 27px rgba(0, 0, 0, 0.3);
+          margin-top: 0px;
+          margin-bottom: 0;
+          transition: all .3s ease-in-out;
+          box-shadow: none;
+          background: @default-color;
+          .rounded(10px);
             .timeline-header {
                 display: block;
                 width: 100%;
@@ -82,10 +86,7 @@
     }
 
     .timeline-item {
-        //padding: @timeline-item-padding-y @timeline-item-padding-x;
-        box-shadow: 0 6px 27px rgba(0, 0, 0, 1);
-        background: #4c6b9a;
-        .rounded(10px);
+
 
         .timeline-body {
             background-color: @timeline-bg-message-box;
@@ -98,6 +99,8 @@
     }
 
     .timeline-item:hover{
-      box-shadow: none;
+      box-shadow: 0 3px 33px rgba(0, 0, 0, 0.4);
+      margin-top: -20px;
+      margin-bottom: 20px;
     }
 }

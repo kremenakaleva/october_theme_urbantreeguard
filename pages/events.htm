@@ -44,12 +44,14 @@ function onStart(){
 }
 ?>
 ==
-<div class="container">
+
 	{% if not slug %}
-	<h1 class="page_heading">Events</h1>
+<div class="container-fluid partners_background">
+<div class="container">
 	<div class="tabs">
-		<a class="" href="#calendarView">Calendar view</a>
-		<a class="" href="#listView">List view</a>
+		<a class="calendar_vew" href="#calendarView">Calendar view</a>
+		<a class="grid_vew" href="#gridView">Grid view</a>
+		<a class="list_vew" href="#listView">List view</a>
 	</div>
 	<!--tabs content	-->
 
@@ -59,7 +61,7 @@ function onStart(){
 	<div class="row" id="listView">
 		<div class="events_list_container">
 			{% for entry in entries %}
-			{% set url = entry.url ?  entry.url : '/entry/'~entry.id %}
+			{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
 
 			<div class="event_list_item">
 				<div class="row between-xs time_and_date">
@@ -68,7 +70,7 @@ function onStart(){
 				</div>
 				<div class="row">
 					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
-					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_time}}</div> <div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ entry.url }}" target="_blank">{{entry.title}}</a></div>
+					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_time}}</div> <div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}">{{entry.title}}</a></div>
 				</div>
 			</div>
 
@@ -79,8 +81,51 @@ function onStart(){
 		</div>
 
 	</div>
+
+	<div class="row eventslist " id="gridView">
+			{% for entry in entries %}
+
+			{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
+
+			<div class="col-xs-12 col-md-3 news-item item-{{entry.slug}}">
+				<div class="row news_column">
+					{% if entry.cover_image %}
+					<a class="news-image col-xs-12 center-xs" href="{{url}}">
+						<img class="news-img-top" src="{{entry.cover_image.getThumb(506,311, { mode : 'crop' } )}}">
+					</a>
+					{% endif %}
+
+
+					<div class="news-container col-xs-12">
+						{% if entry.event_date %}
+						<div class="event-date">
+							{{entry.event_date}}
+							{{entry.event_time}}
+						</div>
+						{% endif %}
+
+						{% if entry.place %}
+						<div class="event-place"> {{ entry.place }}</div>
+						{% endif %}
+						<div class="news-title">
+							<h3 class="card-title"><a href="{{url}}">{{entry.title}}</a></h3>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			{% endfor %}
+
+			<div class="row container">
+				{{ entries.fragment('listView').render|raw }}
+			</div>
+	</div>
+</div>
+</div>
 	{% else %}
 
+	<div class="container">
 	{% if entry %}
 	<div class="row newslist single-news-item">
 		{% set materials = entry.materials %}
@@ -137,6 +182,7 @@ function onStart(){
 
 		{% endif %}
 
+	</div>
 	</div>
 	<script>
 		createTippy('#share-{{slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})

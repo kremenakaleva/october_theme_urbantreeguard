@@ -25,9 +25,7 @@ function onStart(){
 ==
 <div class="container">
 
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
-
-	<h1 class="page_heading">Presss releases</h1>
+	<h1 class="display-1">Presss releases</h1>
 
 	<div class="row">
 		{% set records = mediaPressreleasesList %}
@@ -43,11 +41,11 @@ function onStart(){
 		<div class="col-xs">
 			<div class="card-container library-item">
 				<span class="card_title">{{record.name}}</span><br><br>
-				<span class=""> {{record.date |date('F Y')}}</span> <br><br>
+				<span class="text-published"> {{record.date |date('F Y')}}</span> <br><br>
 				<div class="body">{{record.description | raw}}</div>
 				<div class="row link mt-3">
 					{% for link in record.link %}
-					<a href="{{link.url}}" target="_blank" class="btn btn-primary">{{link.text}}</a>
+					<a href="{{link.url}}" target="_blank" class="btn btn-primary">{{link.text}}</a> &nbsp;  &nbsp; &nbsp;
 					{% endfor %}
 				</div>
 			</div>

@@ -19,7 +19,7 @@ nav:not(.navbar){
 .news-title {
   .card-title{
     color: @dark-color;
-    font-weight: normal;
+    font-weight: bold!important;
     text-transform: unset;
     font-size: 22px;
     * {
@@ -107,9 +107,10 @@ nav:not(.navbar){
 }
 
 .newslist .col-xs-12,
+.events .eventslist,
 .news .newslist{
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   .breakpoint-small-down({
     display: unset;
   });
@@ -139,12 +140,17 @@ nav:not(.navbar){
     padding: 0px;
     position: relative;
     margin-bottom: 30px;
-    display: block;
+    margin-right: 23px;
+
+  //display: block;
      .news_column{
        background: @white-color;
        display: block;
        .rounded(10px);
-       box-shadow: 0 6px 27px rgba(0, 0, 0, 0.3);
+       margin-top: 0px;
+       margin-bottom: 0;
+       transition: all .3s ease-in-out;
+       box-shadow: none;
        img{
          width: 100% !important;
        }
@@ -174,7 +180,9 @@ nav:not(.navbar){
      }
 
     .news_column:hover{
-      box-shadow: none;
+      box-shadow: 0 3px 33px rgba(0, 0, 0, 0.4);
+      margin-top: -20px;
+      margin-bottom: 20px;
     }
     .breakpoint-large-down({
       display: flex;
@@ -183,16 +191,42 @@ nav:not(.navbar){
       flex-basis: 100%!important;
       max-width: 100%!important;
       margin-top: 30px!important;
+      margin-right: 0;
     });
   }
 }
 
-.news .newslist{
-  .news_column:hover{
-    box-shadow: 0 6px 27px rgba(0, 0, 0, 0.1) !important;
 
+.events .newslist .col-xs-12{
+  display: block;
+}
+
+.news .newslist{
+  margin-right: 20px;
+  .news-item{
+    margin-right: 0;
+  }
+  .news_column{
+    margin-right: 23px;
+    .breakpoint-small-down({
+      margin-right: 0;
+    })
   }
 }
+.events .eventslist{
+  margin-right: 20px;
+  .news-item{
+    margin-right: 0;
+    display: flex;
+  }
+  .news_column{
+    margin-right: 23px;
+    .breakpoint-small-down({
+      margin-right: 0;
+    })
+  }
+}
+
 .home .newslist{
   margin-top: 50px;
   .breakpoint-small-down({

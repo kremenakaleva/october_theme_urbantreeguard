@@ -28,6 +28,18 @@ $(document).ready(function() {
 		divs.slice(i, i+2).wrapAll( '<div class="col-xs" />');
 	}
 
+	if(documentHasScroll){
+		$("nav").addClass("shrink");
+    }
+	$(document).on("scroll", function () {
+		if($(document).scrollTop() > 20) {
+			$("nav").addClass("shrink");
+		} else
+		{
+			$("nav").removeClass("shrink");
+		}
+	});
+
 	var headerNavbar = $('#headerNavbar');
 	var width100 = $('.width100');
 	var innerWidth = $('body').innerWidth();
@@ -35,34 +47,33 @@ $(document).ready(function() {
 	width100.width(innerWidth);
 
 
-	$('body').on('click', '.work_packages .accordion-toggle, .pilots .accordion-toggle', function () {
-		if ($(this).next(".accordion-content").is(':visible')) {
-			$(this).next(".accordion-content").slideUp(300);
+	$('body').on('click', '.working_groups_parent .accordion-toggle', function () {
+		if ($(this).find(".accordion-content").is(':visible')) {
+			$(this).find(".accordion-content").slideUp(300);
 			$(this).children().find(".plusminus").text('+');
 			$(this).children(".plusminus").html('<span class="plus"></span>');
 		} else {
-			$(this).next(".accordion-content").slideDown(300);
+			$(this).find(".accordion-content").slideDown(300);
 			$(this).children().find(".plusminus").text('-');
 			$(this).children(".plusminus").html('<span class="minus"></span>');
+		}
+	});
+
+	$('body').on('click', '.working_groups_members .accordion-toggle', function () {
+		if ($(this).next(".accordion-content").is(':visible')) {
+			$(this).next(".accordion-content").slideUp(300);
+			$(this).children(".plusminus").addClass('plus');
+			$(this).children(".plusminus").removeClass('minus');
+		} else {
+			$(this).next(".accordion-content").slideDown(300);
+			$(this).children(".plusminus").removeClass('plus');
+			$(this).children(".plusminus").addClass('minus');
 		}
 	});
 
 	$('.nav.nav-pills').removeAttr('id');
 
 	var count = $("h1").text().length;
-
-	//
-	// $('.content-wrapper.news .content img').each(function(){
-	// 	$(this).attr('id', 'myImg');
-	// 	$(this).addClass('myImages');
-	// });
-	//
-	// $('.content-wrapper.news').after('<div id=\"myModal\" class=\"modal\">\n' +
-	// 	'  <span class=\"close_modal\">&times;</span>\n' +
-	// 	'  <img class=\"modal-content\" id=\"img01\">\n' +
-	// 	'  <div id=\"caption\"></div>\n' +
-	// 	'</div>');
-
 
 	$('.tabs').each(function(){
 		// For each set of tabs, we want to keep track of
@@ -91,8 +102,23 @@ $(document).ready(function() {
 			}, speed);
 		}
 
+		if(window.location.hash == '#workingGroups') {
+			if($('.partners .container-fluid:first-child').hasClass('partners_background')){
+				$('.partners .container-fluid:first-child').removeClass('partners_background');
+			}
+		}
+
 		// Bind the click event handler
 		$(this).find("a").click(function (e) {
+			if(window.location.hash == '#members') {
+				if($('.partners .container-fluid:first-child').hasClass('partners_background')){
+					$('.partners .container-fluid:first-child').removeClass('partners_background');
+				}
+			}else{
+				if(!$('.partners .container-fluid:first-child').hasClass('partners_background')){
+					$('.partners .container-fluid:first-child').addClass('partners_background');
+				}
+			}
 			if($(this).hasClass('active')) {
 				$content.slideDown({
 					scrollTop: $content.offset().top - $('header').height()
@@ -127,23 +153,12 @@ $(document).ready(function() {
 
 			// Make the tab active.
 			$active.addClass('active');
+
+
 			$content.slideDown({
 				scrollTop: $content.offset().top - $('header').height()
 			}, speed);
-			// var screenSize = getScreenSize();
-			// if (screenSize.width < 800) {
-			// 	// scroll to element
-			// 	$('html, body').animate({
-			// 		scrollTop: $content.offset().top - $('header').height() + 300 // mobile
-			// 	}, speed);
-			// }else{
-			// 	//scroll to element icons top
-			// 	$('html, body').animate({
-			// 		scrollTop:  $content.offset().top - $('header').height() + 300
-			// 	}, speed);
-			// }
 
-			// Prevent the anchor\'s default click action
 			e.preventDefault();
 		});
 	});
@@ -157,8 +172,8 @@ $(document).ready(function() {
 	$('.card-img-top').attr('data-aos', 'fade-up');
 	$('.logo-container').attr('data-aos', 'fade-up');
 	$('.subscribe-items a').attr('data-aos', 'fade-up');
-	$('.icons a').attr('data-aos', 'fade-up');
-	$('.about h1.display-1').attr('data-aos', 'fade-up');
+	// $('.icons a').attr('data-aos', 'fade-up');
+	$('.about .network-will').attr('data-aos', 'fade-up');
 	$('h2.underline').attr('data-aos', 'fade-up');
 	$('.news_column').attr('data-aos', 'fade-up');
 	$('.timeline-item').attr('data-aos', 'fade-up');
@@ -176,54 +191,11 @@ $(document).ready(function() {
 	$('.card_image_container').attr('data-aos', 'fade-up');
 	$('.coordinator_image').attr('data-aos', 'fade-up');
 
+	if ($(window).width() >= 1024) {
+		$('.key_1, .key_3, .key_5, .key_7, .key_9, .key_11, .key_13').wrapAll('<div class="col-md-6 col-xs-12" />');
+		$('.key_0, .key_2, .key_4, .key_6, .key_8, .key_10, .key_12').wrapAll('<div class="col-md-6 col-xs-12" />');
+	}
 
-// 	// create references to the modal...
-// 	var modal = document.getElementById('myModal');
-// // to all images -- note I'm using a class!
-// 	var images = document.getElementsByClassName('myImages');
-// // the image in the modal
-// 	var modalImg = document.getElementById("img01");
-// // and the caption in the modal
-// 	var captionText = document.getElementById("caption");
-//
-// // Go through all of the images with our custom class
-// 	for (var i = 0; i < images.length; i++) {
-// 		var img = images[i];
-// 		// and attach our click listener for this image.
-// 		img.onclick = function(evt) {
-// 			modal.style.display = "block";
-// 			modalImg.src = this.src;
-// 			captionText.innerHTML = this.alt;
-// 		}
-// 	}
-//
-// 	var span = document.getElementsByClassName("close_modal")[0];
-//
-// 	span.onclick = function() {
-// 		modal.style.display = "none";
-// 	}
-
-	$('.partners .partner_description, .partners .list-item-body').each(function(){
-		var countParagraphs = $(this).find('p').length;
-		if(countParagraphs > 1) {
-			$(this).find('p').first().append('<div class="dorsal">Read more</div>');
-			$(this).find('p:not(:first)').wrapAll("<div class='toogle-contact-paragraphs'></div>")
-		}
-	});
-
-	$('.dorsal').click(function () {
-		var link = $(this);
-		link.parent().parent().find('.toogle-contact-paragraphs').slideToggle('slow', function() {
-			if ($(this).is(':visible')) {
-				link.text('Read less');
-			} else {
-				link.text('Read more');
-			}
-		});
-
-	});
-
-	$('.see_all_partners_link').hide();
 
 
 });
@@ -240,30 +212,6 @@ function createTippy(element, options) {
 		resolve();
 	});
 }
-//
-// function getScreenSize() {
-// 	var myHeight = 0;
-// 	var myWidth = 0;
-// 	if (window.innerWidth && window.innerHeight) {
-// 		// Netscape & Mozilla
-// 		myHeight = window.innerHeight;
-// 		myWidth = window.innerWidth;
-// 	} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-// 		// IE > 6
-// 		myHeight = document.documentElement.clientHeight;
-// 		myWidth = document.documentElement.clientWidth;
-// 	} else if (document.body.offsetWidth && document.body.offsetHeight) {
-// 		// IE = 6
-// 		myHeight = document.body.offsetHeight;
-// 		myWidth = document.body.offsetWidth;
-// 	} else if (document.body.clientWidth && document.body.clientHeight) {
-// 		// IE < 6
-// 		myHeight = document.body.clientHeight;
-// 		myWidth = document.body.clientWidth;
-// 	}
-//
-// 	return {'width': myWidth, 'height': myHeight};
-// }
 
 
 
@@ -302,10 +250,10 @@ function appendSignOut() {
 
 function appendSearchAndSocialMedia(){
 	var liSearch = '<li class="nav-item search_field"><a href=\"javascript: void(0);\" onclick=\"showSearchForm();\"></a></li>';
-	// var liSocial = '<li class="nav-item social"><a href=\"https://www.facebook.com/BiCIKLProjectH2020\" target=\"_blank\" class=\"pr p-facebook big\" target=\"_blank\"></a><a href=\"https://twitter.com/BiCIKL_H2020\" target=\"_blank\" class=\"pr p-twitter big\" target=\"_blank\"></a></li>';
+	var liSocial = '<li class="nav-item social"><a href=\"https://www.facebook.com/BiCIKLProjectH2020\" target=\"_blank\" class=\"pr p-facebook big\" target=\"_blank\"></a><a href=\"https://twitter.com/BiCIKL_H2020\" target=\"_blank\" class=\"pr p-twitter big\" target=\"_blank\"></a></li>';
 	var menu = $('#menuToggle');
-	// menu.find('>ul').append(liSearch).append(liSocial);
-	menu.find('>ul').append(liSearch);
+	menu.find('>ul').append(liSearch).append(liSocial);
+	// menu.find('>ul').append(liSearch);
 }
 
 function redirectAndRefresh(url){
@@ -333,7 +281,15 @@ function requestFormLibrary() {
 }
 
 function requestFormPartners() {
-	$('#myPartnersForm').on('click', 'a', function () {
+
+	$('#myPartnersForm').on('click', 'button', function () {
+		$('#myPartnersForm button').removeClass('active');
+		var $form = $(this).closest('form');
+		$(this).addClass('active');
+		$('input[name="category"]').val($(this).val());
+		$form.request();
+	})
+	$('#myPartnersForm').on('change', 'select', function () {
 		var $form = $(this).closest('form');
 		$form.request();
 	})
@@ -423,7 +379,7 @@ function init() {
         }
 		appendSearchAndSocialMedia()
 		requestFormLibrary()
-		// requestFormPartners()
+		requestFormPartners()
         // keepFooter(documentHasScroll());
 
     });

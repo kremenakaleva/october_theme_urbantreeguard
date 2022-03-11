@@ -1,4 +1,4 @@
-title = "Promotional materials"
+title = "Media center"
 url = "/media-center/flyer"
 layout = "default"
 is_hidden = 0
@@ -49,8 +49,6 @@ return Redirect::to('/media-center/flyer');
 ?>
 ==
 <div class="container">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
-	<h1 class="page_heading">Promotional materials</h1>
 	<div class="row">
 		{% set records = mediaFlyersList %}
 		{% set displayColumn = mediaFlyersList.displayColumn %}
@@ -63,10 +61,11 @@ return Redirect::to('/media-center/flyer');
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
 		{% if record.flyer_image %}
-		<div class="col-md-2 col-xs-12">
+		<div class="col-md col-xs-12">
 			<div class="card-container text-center">
-				<span class="card_image_container" style="background: url({{record.flyer_image.thumb(243,243,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
-				<span class="card_title">{{record.name}}, {{record.file.size}}</span><br>
+				<h1 class="display-1">{{record.name}}</h1>
+				<span class="card_image_container" style="background: url({{record.flyer_image.thumb(auto,448,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
+
 				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" title="{{record.name}}" class="btn btn-primary">Download</a>
 			</div>
 		</div>

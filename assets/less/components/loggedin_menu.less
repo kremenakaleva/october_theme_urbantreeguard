@@ -52,6 +52,11 @@
       color: @date-text-color!important;
   });
 }
+.nav-item.social a{
+  .breakpoint-small-down({
+    font-size: 65px!important;
+  });
+}
 
 #headerNavbarLogin{
   .breakpoint-small-down({
@@ -73,22 +78,32 @@
 }
 
 #menuToggle{
-  .breakpoint-huge-down({
-    order: 3;
-  });
   .breakpoint-small-down({
-    order: 2;
+    position: absolute;
+    top: 35px;
+    right: 32px;
+    left: unset;
   });
+
 }
 
-.navbar-brand{
-  .breakpoint-huge-down({
-    order: 1;
-  });
-  .breakpoint-small-down({
-    order: 1;
-  });
-}
+//#menuToggle{
+//  .breakpoint-huge-down({
+//    order: 3;
+//  });
+//  .breakpoint-small-down({
+//    order: 2;
+//  });
+//}
+//
+//.navbar-brand{
+//  .breakpoint-huge-down({
+//    order: 1;
+//  });
+//  .breakpoint-small-down({
+//    order: 1;
+//  });
+//}
 //
 //.search{
 //  .breakpoint-huge-down({

@@ -15,6 +15,10 @@
             flex-direction: row;
             .field {
                 margin-top: 0;
+
+                .breakpoint-small-down({
+                  margin-bottom: 20px;
+                });
             }
         }
         .field {
@@ -41,18 +45,18 @@
         }
         & > input, textarea, select {
             display: block;
-            width: 100%;
+            //width: 100%;
             font-size: @font-size;
             color: @dark-color;
             background-color: @white-color;
             box-sizing: border-box;
-            padding: .7rem 1rem;
+            padding: .7rem .7rem;
             .line-height();
-            .rounded(50px);
-            border: 0px solid #dddddd;
+            .rounded(10px);
+            border: 0px solid #C1C1C1;
             border-right-width: 15px;
             border-right-color: white;
-            box-shadow: 0 0 0 1px #dddddd;
+            box-shadow: 0 0 0 1px #C1C1C1;
 
             &:focus {
                 outline: none;

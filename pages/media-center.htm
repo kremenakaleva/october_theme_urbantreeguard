@@ -24,13 +24,12 @@ function onStart(){
 ?>
 ==
 <div class="container">
-	<h1 class="page_heading ml-1">Media center</h1>
 	<div class="row between-sm between-xs">
 		{% if logos.count() %}
 		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/logo" title="Logo">
-					<span class="card_image_container" style="background: url({{'pensoft/mediacenter-logo.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/logo" title="Logo"></span>
+					<span class="card_image_container" style="background: url({{'pensoft/logo.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/logo" title="Logo"></span>
 					<span class="media_label">Logo</span>
 				</a>
 			</div>
@@ -51,8 +50,18 @@ function onStart(){
 		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/press-releases" title="Press releases">
-					<span class="card_image_container" style="background: url({{'pensoft/press_releases.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/press-releases" title="Press releases"></span>
+					<span class="card_image_container" style="background: url({{'pensoft/press-releases.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/press-releases" title="Press releases"></span>
 					<span class="media_label">Press releases</span>
+				</a>
+			</div>
+		</div>
+		{% endif %}
+		{% if presentations.count() %}
+		<div class="col-sm-2 col-xs-6">
+			<div class="card-container text-center">
+				<a href="{{url('media-center')}}/templates" title="Templates">
+					<span class="card_image_container" style="background: url({{'pensoft/templates.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/templates" title="Templates"></span>
+					<span class="media_label">Templates</span>
 				</a>
 			</div>
 		</div>

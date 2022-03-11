@@ -1,4 +1,4 @@
-title = "Videos"
+title = "Media center"
 url = "/media-center/videos"
 layout = "default"
 is_hidden = 0
@@ -48,9 +48,8 @@ return Redirect::to('/media-center/videos');
 ?>
 ==
 <div class="container">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
 
-	<h1 class="page_heading">Videos</h1>
+	<h1 class="display-1">Videos</h1>
 	<div class="row">
 		{% set records = mediaVideosList %}
 		{% set displayColumn = mediaVideosList.displayColumn %}

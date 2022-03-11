@@ -443,7 +443,9 @@ a:hover .arrow-left{
 
 .card.internal .card-header {
   text-align: center;
-  padding: 0 20px;
+  padding: 0;
+  font-weight: bold;
+  width: 170px;
 
   a{
     color: @dark-color!important;
@@ -462,13 +464,13 @@ a:hover .arrow-left{
 
 .folder-background{
   display: flex;
-  background-size: 80px!important;
-  height: 180px!important;
-  width: 180px;
-  background-color: @white-color!important;
-  border-radius: 50%;
-  margin: 25px auto;
-  border: 2px solid @link-color;
+  background-size: 65px!important;
+  height: 170px!important;
+  width: 170px;
+  background-color: #F0F0F0!important;
+  border-radius: 10px;
+  margin: 25px 0;
+  border: none;
   &:hover{
     background-color: @link-color!important;
   }
@@ -479,19 +481,27 @@ a:hover .arrow-left{
   })
 }
 
+.internal-documents{
+  .base_heading.inner-page{
+    text-align: left;
+    font-size: 22px;
+    margin: 30px 0;
+  }
+}
+
 .internal-documents, .documents-search{
 
   h4{
     text-transform: none;
   }
   .accordion-toggle{
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid #C1C1C1;
     padding: 20px !important;
     margin: 0!important;
     cursor: pointer;
     width: 100%;
-    background: #E6E6E6;
+    background: #F0F0F0;
     color: #555555;
     font-size: 20px;
     font-weight: normal;
@@ -564,8 +574,8 @@ a:hover .arrow-left{
         font-size: 18px;
         color: #122642;
         background-color: #ffffff;
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
         border: 1px solid #d1d1d1!important;
         border-right: 0!important;
         padding: 5px 10px;

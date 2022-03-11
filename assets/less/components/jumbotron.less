@@ -23,10 +23,9 @@
     background: url('../../assets/images/vision.svg') left no-repeat;
     padding-left: 56px;
     .breakpoint-small-down({
-      background: url('../../assets/images/vision.svg') top center no-repeat;
-      padding-left: 0px;
       text-align: center;
-      padding-top: 53px;
+      width: fit-content;
+      margin: 0 auto;
     })
   }
 
@@ -39,16 +38,22 @@
 
 .mission_vision_goals{
   background: #E4E7E7;
+  h1.display-1{
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
 }
 .mission{
   h1{
     background: url('../../assets/images/mission.svg') left no-repeat;
     padding-left: 56px;
     .breakpoint-small-down({
-      background: url('../../assets/images/mission.svg') top center no-repeat;
-      padding-left: 0px;
       text-align: center;
-      padding-top: 53px;
+      width: fit-content;
+      margin: 0 auto;
     })
   }
 
@@ -63,10 +68,9 @@
     background: url('../../assets/images/goals.svg') left no-repeat;
     padding-left: 56px;
     .breakpoint-small-down({
-      background: url('../../assets/images/goals.svg') top center no-repeat;
-      padding-left: 0px;
       text-align: center;
-      padding-top: 53px;
+      width: fit-content;
+      margin: 0 auto;
     })
   }
 
@@ -103,6 +107,10 @@
   .breakpoint-small-down({
     text-align: center;
     margin: 30px auto;
+    width: 166px;
+    height: calc(~"175px - 22%");
+    padding-top: 30%;
+  margin-bottom: 100px;
   })
 }
 
@@ -136,5 +144,34 @@
       width: 100%;
       float: none;
     });
+  }
+
+  .network-will{
+    text-align: center;
+    padding: 120px 30px 30px 30px;
+    margin-top: 50px;
+    &:nth-of-type(1){
+      background: url("../../assets/images/about/1.svg") top center no-repeat;
+      background-size: 65px 92px;
+    }
+    &:nth-of-type(2){
+      background: url("../../assets/images/about/2.svg") top center no-repeat;
+      background-size: 103px;
+    }
+
+    &:nth-of-type(3){
+      background: url("../../assets/images/about/3.svg") top center no-repeat;
+      background-size: 109px 104px;
+    }
+
+    &:nth-of-type(4){
+      background: url("../../assets/images/about/4.svg") top center no-repeat;
+      background-size: 92px 82px;
+    }
+
+    &:nth-of-type(5){
+      background: url("../../assets/images/about/5.svg") top center no-repeat;
+      background-size: 68px;
+    }
   }
 }

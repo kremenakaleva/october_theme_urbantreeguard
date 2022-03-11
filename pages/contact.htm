@@ -7,30 +7,52 @@ robot_follow = "follow"
 
 [siteSearchInclude]
 
-[jumbotron]
-jumbotron = "contact"
-background = "#ffffff"
-templates = "template2"
-description_limit = 0
+
+==
+<?php
+use Pensoft\Cardprofiles\Models\Profiles;
+
+function onStart(){
+	$this['profiles'] =  Profiles::where('category_id', 5)->get();
+}
+?>
 ==
 {% component 'siteSearchInclude' %}
 
 <div class="container">
-	<h1 class="page_heading ml-1 mb-4">Contact</h1>
 	<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <div class="contact_info row">
-            <div class="col-md-5 col-xs-12 coordinator_image aos-init aos-animate" data-aos="fade-up">Here will be the image</div>
-            <div class="col-md-7 col-xs-12 coordinator_info">
-                <h3>Iván Cáceres Rabionet</h3>
-                <p class="card_title">Project manager</p>
-                <p class="contact_affiliation">Affiliation</p>
-                <p class="contact_address"><i class="pr big p-location"></i>Laboratori d'Enginyeria Marítima<br>Universitat Politècnica de<br>Catalunya</p>
-                <p class="contact_phone"><i class="pr big p-phone"></i>+34 93 401 0936</p>
-                <p class="contact_mail"><i class="pr big p-mail"></i><a href="mailto:david.kleijn@wur.nl">E-mail</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-    
+		{% for profile in profiles %}
+		<div class="col-xs-12 col-md-4">
+			<div class="row profile-container">
+				<div class="col-xs-12"><h1 class="display-1">{{profile.names}}</h1></div>
+				<div class="col-xs-12 col-md-6">
+					<div class="profile-image person">
+						{% if profile.avatar %}
+						<img alt="{{ profile.names }}" src="{{profile.avatar.getThumb(228,274, { mode : 'crop' } )}}">
+						{% else %}
+						<img alt="{{ profile.names }}" src="{{ 'CMS_icons_avatar.svg'|media }}">
+						{% endif %}
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="position">{{profile.position}}</div>
+
+					<div class="contact-info">{{profile.department}}</div>
+
+					<div class="profile-description">
+						<div class="contact-info"><i class="pr small p-mail"></i>{{profile.email}}</div>
+						<div class="contact-info"><i class="pr normal p-phone"></i>{{profile.phone}}</div>
+						<div class="contact-info"><i class="pr normal p-location"></i>{{profile.address}}</div>
+					</div>
+
+					<a class="contact-mail" href="mailto:l.penev@pensoft.net"></a>
+
+				</div>
+
+
+			</div>
+		</div>
+		{% endfor %}
+
+	</div>
 </div>

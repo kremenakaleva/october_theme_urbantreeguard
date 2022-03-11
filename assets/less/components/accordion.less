@@ -60,7 +60,7 @@
 
 /*------------------------*/
 
-.work_packages h2, .pilots h2{
+.working_groups_parent h2, .pilots h2{
   font-size: 36px!important;
   line-height: 1.7em!important;
   .breakpoint-small-down({
@@ -108,50 +108,27 @@
   display: inline-block;
 }
 
-.work_packages, .pilots{
+.working_groups_parent, .working_groups_members{
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.work_packages .accordion-border, .pilots .accordion-border{
+.working_groups_parent .accordion-border{
   border: none;
-  padding: 15px 20px!important;
+  padding: 0!important;
   margin: 0 0 20px 0;
   font-size: 1em;
   cursor: pointer;
-  width: 100%;
+  width: 95%;
   background: #e6e6e6;
   .rounded(10px);
   .breakpoint-small-down({
-    width: 90%;
+    width: 100%;
   });
 }
 
-.pilots h2{
-  display: none;
-}
-.pilots .container-fluid.banner .container{
-  padding-top: 0;
-}
-
-.pilots .accordion-border{
-  border: none;
-  padding: 15px 20px!important;
-  margin: 0 0 20px 0;
-  font-size: 1em;
-  cursor: pointer;
-  width: 94%;
-  background: #e6e6e6!important;
-  .rounded(10px);
-  .breakpoint-small-down({
-    width: 90%;
-    background: #e6e6e6;
-  margin-bottom: 20px!important;
-  });
-}
-
-.work_packages .accordion-toggle, .pilots .accordion-toggle{
+.working_groups_parent .accordion-toggle{
   background: none;
   border: none;
   border-radius: unset;
@@ -159,31 +136,45 @@
   color: @dark-color;
   font-size: 1em;
   font-weight: bold;
-  div:first-of-type, div:nth-of-type(2){
-    font-weight: normal;
+  display: flex;
+  background: @green-color;
+  border-radius: 10px;
+  justify-content: space-between;
+
+
+
+
+  .container_title_and_text{
+    background: #E4E7E7;
+    min-height: 82px;
+    .rounded-tr(10px);
+    .rounded-br(10px);
+    font-weight: bold;
     font-size: 22px;
+    padding-top: 1.3rem;
+    flex-basis: 82%;
+    max-width: 82%;
   }
 
 }
-.work_packages .accordion-content, .pilots .accordion-content{
-  padding-top: 20px;
+.working_groups_parent .accordion-content{
   line-height: 1.5em!important;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 100%!important;
-}
-.pilots .accordion-content{
-  padding-top: 30px;
-  line-height: 1.5em!important;
+  font-weight: normal;
+  font-size: 18px;
 }
 
 
-.work_packages .accordion-content p, .pilots .accordion-content p{
+.working_groups_parent .accordion-content p{
   .breakpoint-large-down({
     padding: 0!important;
     text-align: left!important;
   });
 }
 
-.work_packages .plusminus, .pilots .plusminus{
+.working_groups_parent .plusminus{
   max-width: 35px;
   height: 35px;
   text-align: right;
@@ -207,28 +198,141 @@
   }
 }
 
-.work_packages .green_bullet{
-  background: @default-color;
+.working_groups_parent .green_bullet{
+  background: @green-color;
   color: @white-color;
-  width: 60px!important;
-  max-width: 60px!important;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 50%;
+  //width: 111px!important;
+  //max-width: 111px!important;
+  min-height: 82px;
+  line-height: 82px;
+  .rounded-tl(10px);
+  .rounded-bl(10px);
+
+  padding: 0;
+  //margin: 0 10px 0 0px;
+  text-align: center;
+  flex-basis: unset;
+  font-size: 22px!important;
+  font-weight: bold;
+  flex: 1;
+}
+
+
+/////////
+// members list accordions
+/////////
+
+.working_groups_members .accordion-border{
+  border: none;
+  padding: 0!important;
+  margin: 0 0 20px 0;
+  font-size: 1em;
+  cursor: pointer;
+  width: 95%;
+  .rounded(10px);
+  .breakpoint-small-down({
+    width: 100%;
+  });
+}
+
+.working_groups_members .accordion-toggle{
+  background: none;
+  border: none;
+  padding: 0;
+  color: @dark-color;
+  font-size: 1em;
+  font-weight: bold;
+  display: inline-flex;
+
+  .title_container{
+    font-size: 22px;
+    img{
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+      margin-right: 15px;
+      border-radius: 50%;
+      float: left;
+    }
+  }
+
+}
+.working_groups_members .accordion-content{
+  line-height: 1.5em!important;
+  padding: 22px 0px 22px 40px;
+  width: 100%!important;
+  font-weight: normal;
+  font-size: 18px;
+  background: #e6e6e6;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  div.col-xs-12{
+    padding-right:40px;
+    .breakpoint-small-down({
+      margin: 20px 0;
+    });
+  }
+  p{
+    margin-bottom: 0;
+  }
+  h4{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+
+}
+
+//
+//.working_groups_members .accordion-content p{
+//  .breakpoint-large-down({
+//    padding: 0!important;
+//    text-align: left!important;
+//  });
+//}
+
+.working_groups_members .plusminus{
+  max-width: 20px;
+  height: 18px;
+  text-align: right;
+  vertical-align: middle;
+  color: @default-color;
+  font-size: 1em;
+  background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+  &.plus{
+    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+  }
+  &.minus{
+    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
+
+  //.plus::before{
+  //  content: '\002B';
+  //}
+  //.minus::before{
+  //  content: '\2212';
+  //}
+}
+
+.working_groups_members .green_bullet{
+  color: @white-color;
+  width: 111px!important;
+  max-width: 111px!important;
+  min-height: 82px;
+  line-height: 82px;
+  .rounded-tl(10px);
+  .rounded-bl(10px);
+
   padding: 0;
   margin: 0 10px 0 0px;
   text-align: center;
   flex-basis: unset;
-  font-size: 20px!important;
-}
-.pilots .green_bullet{
-  background: url("../../assets/images/location_pilots.svg") left no-repeat;
-  background-size: contain;
-  width: 50px!important;
-  max-width: 50px!important;
-  height: 47px;
-  line-height: 47px;
-  flex-basis: unset;
+  font-size: 22px!important;
+  font-weight: bold;
+  flex: 1;
 }
 
 
@@ -236,12 +340,6 @@
   width: 100%!important;
   flex-basis: 100%!important;
   max-width: 100%!important;
-}
-
-.pilots .ui-accordion-header.col-md-6.col-xs-12{
-  width: 50%!important;
-  flex-basis: 50%!important;
-  max-width: 50%!important;
 }
 
 #ui-id-1,
@@ -267,30 +365,6 @@
     display: block!important;
     width: 100%;
   })
-}
-
-.about{
-  #ui-id-1,
-  #ui-id-2,
-  #ui-id-3,
-  #ui-id-4,
-  #ui-id-5,
-  #ui-id-6,
-  #ui-id-7,
-  #ui-id-8,
-  #ui-id-9,
-  #ui-id-10,
-  #ui-id-11,
-  #ui-id-12,
-  #ui-id-13,
-  #ui-id-14,
-  #ui-id-15,
-  #ui-id-16{
-    .breakpoint-large-down({
-      display: flex!important;
-      width: 100%;
-    })
-  }
 }
 
 

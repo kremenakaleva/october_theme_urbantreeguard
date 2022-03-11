@@ -37,13 +37,22 @@
       vertical-align: middle;
     }
     &.small {
-      .font-size(0.80);
+      .font-size(0.60);
+      padding: 5px;
+      margin-right: 2px;
     }
     &.normal {
       .font-size(1.5);
     }
     &.big {
       .font-size(2);
+      &.p-mail{
+        .font-size(1);
+        width: 36px;
+        height: 36px;
+        line-height: 36px!important;
+        text-align: center;
+      }
     }
     &.middle {
       .font-size(2.3);
@@ -93,7 +102,7 @@
     }
   
     &.p-search {
-      color: #4D6C9C;
+      color: @default-color;
     }
     &.p-success {
       color: @success-color;
@@ -118,13 +127,6 @@
     }
     &.p-subscribe {
       font-size: 1.3em!important;
-      width: 36px!important;
-      height: 36px!important;
-      line-height: 36px!important;
-      text-align: center;
-    }
-    &.p-mail {
-      font-size: 1em!important;
       width: 36px!important;
       height: 36px!important;
       line-height: 36px!important;
@@ -240,7 +242,7 @@
   content: "\eaf3";
 }
 .p-subscribe:before {
-  content: "\e907";
+  content: "\e90f";
 }
 .p-subscribe2:before {
   content: "\e902";

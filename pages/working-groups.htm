@@ -1,0 +1,92 @@
+url = "/working-groups"
+layout = "default"
+title = "Network"
+==
+<?php
+use Pensoft\Cardprofiles\Models\Category as WorkingGroup;
+use Pensoft\Cardprofiles\Models\Profiles as Profiles;
+use Rainlab\Location\Models\Country;
+
+function onStart(){
+	$this['working_groups'] =  WorkingGroup::whereIn('slug', ['integration', 'innovations', 'information', 'identification'])->orderBy('id', 'asc')->get();
+	$this['profiles'] =  Profiles::whereIn('category_id', [1,2,3,4])->get();
+	$this['countries'] =  Country::whereNotNull('is_enabled')->where('is_enabled', true)->lists('name', 'id');
+	$this['country'] = new class {
+		public function getCountry($id){
+			return Country::whereNotNull('is_enabled')->where('id', $id)->first();
+		}
+	};
+
+}
+
+function onFilter(){
+	if(post('country')){
+		$this['profiles'] = Profiles::where('country_id', post('country'))->whereIn('category_id', [1,2,3,4])->get();
+	}else{
+		$this['profiles'] = Profiles::whereIn('category_id', [1,2,3,4])->get();
+	}
+
+	return [
+		'#membersListDiv' => $this->renderPartial('memberslist')
+	];
+}
+
+function getCountry($id){
+	return Country::whereNotNull('is_enabled')->where('id', $id)->first();
+}
+
+function onHandleForm(){
+	$this['lastValue'] = post('value');
+}
+
+?>
+==
+<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs start-xs breadcrumb-fancy">
+				
+				<a href="{{'partners'|page}}">Members</a>
+                <span>Working groups</span>
+			</div>
+		</div>
+
+		<h1 class="display-1">Working Groups</h1>
+
+		<div id="structure" class="row text-left working_groups_parent relative top-xs ui-accordion ui-widget ui-helper-reset" role="tablist">
+			{% for i, wg in working_groups %}
+			<div class="accordion-border key_{{i}}"><!-- 1 --><!-- css 1 -->
+				<div class="row middle-xs accordion-toggle">
+					<div class="col-xs-2 green_bullet">WP{{i+1}}</div>
+					<div class="col-xs-10 start-xs container_title_and_text">
+						<div class="row middle-xs">
+							<div class="col-xs start-xs title_container">{{wg.name}}</div>
+							<div class="col-xs-2 end-xs plusminus"><span class="plus"></span></div>
+						</div>
+						<div class="row accordion-content" style="display: none;">
+							{{wg.body|raw}}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="row">
+			{{ form_open({ request: 'onHandleForm' }) }}
+			Please enter a string: <input type="text" name="value" value="{{lastValue}}"/>
+			<input type="submit" value="Submit me!"/>
+			{{ form_close() }}
+		</div>
+
+		<div id="membersListDiv" class="row text-left working_groups_members relative top-xs ui-accordion ui-widget ui-helper-reset" role="tablist">
+			{% partial 'memberslist' partners=partners country=country%}
+
+
+		</div>
+
+
+
+
+	</div>
+</div>
