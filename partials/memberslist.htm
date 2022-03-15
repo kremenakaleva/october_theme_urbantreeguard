@@ -6,7 +6,7 @@
 			{% if profile.avatar %}
 			<img alt="{{ profile.names }}" src="{{profile.avatar.getThumb(25,25, { mode : 'crop' } )}}">
 			{% else %}
-			<img alt="{{ profile.names }}" src="{{ 'CMS_icons_avatar.svg'|media }}">
+			<img alt="{{ profile.names }}" src="{{ 'person.svg'|media }}">
 			{% endif %}
 
 			{{profile.names}}</div>

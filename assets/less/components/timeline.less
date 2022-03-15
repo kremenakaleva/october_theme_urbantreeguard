@@ -66,7 +66,10 @@
                 color: @white-color;
                 height: 60%;
                 min-height: 100px;
-              font-size: 22px;
+                font-size: 22px;
+                background-color: @dark-color;
+              .rounded-bl(10px);
+              .rounded-br(10px);
                 .breakpoint-small-down({
                   font-size: 20px;
                 })
@@ -102,5 +105,12 @@
       box-shadow: 0 3px 33px rgba(0, 0, 0, 0.4);
       margin-top: -20px;
       margin-bottom: 20px;
+
+      &>.timeline-body {
+        background-color: transparent!important;
+      }
+      &>.timeline-header {
+        background-color: transparent!important;
+      }
     }
 }

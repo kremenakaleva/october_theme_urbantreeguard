@@ -134,7 +134,6 @@ function onStart(){
 			{% if entry.cover_image %}
 			<img class="content left" src="{{entry.cover_image|crop_image|resize(673, 411, {'mode':'crop'})}}" alt="{{entry.cover_image.title}}">
 			{% endif %}
-			<div class="btn btn-primary share-btn" id="share-{{slug}}">Share</div>
 
 			{% if materials %}
 			<ul class="event_materials">
@@ -185,7 +184,6 @@ function onStart(){
 	</div>
 	</div>
 	<script>
-		createTippy('#share-{{slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
 
 		var documentHasScroll = function() {
 			return window.innerHeight <= document.body.offsetHeight;

@@ -120,9 +120,9 @@
   margin: 0 0 20px 0;
   font-size: 1em;
   cursor: pointer;
-  width: 95%;
-  background: #e6e6e6;
-  .rounded(10px);
+  //width: 95%;
+  //background: #e6e6e6;
+  //.rounded(10px);
   .breakpoint-small-down({
     width: 100%;
   });
@@ -131,15 +131,30 @@
 .working_groups_parent .accordion-toggle{
   background: none;
   border: none;
-  border-radius: unset;
   padding: 0;
   color: @dark-color;
   font-size: 1em;
   font-weight: bold;
   display: flex;
   background: @green-color;
-  border-radius: 10px;
+  .rounded-tr(12px);
+  .rounded-tl(10px);
+  .rounded-br(12px);
+  .rounded-bl(10px);
   justify-content: space-between;
+
+  //min-height:82px;
+  //width: 100%;
+  //display: -moz-box;
+  //display: -webkit-flexbox;
+  //display: -ms-flexbox;
+  //display: -webkit-flex;
+  //display: -moz-flex;
+  //display: flex;
+  //-webkit-flex-direction: row;
+  //-moz-flex-direction: row;
+  //-ms-flex-direction: row;
+  //flex-direction: row;
 
 
 
@@ -152,8 +167,16 @@
     font-weight: bold;
     font-size: 22px;
     padding-top: 1.3rem;
-    flex-basis: 82%;
-    max-width: 82%;
+    //flex-basis: 82%;
+    //max-width: 82%;
+
+    //position: relative;
+    //-moz-box-flex: 1;
+    //-webkit-flex: 1;
+    //-moz-flex: 1;
+    //-ms-flex: 1;
+    //flex: 1;
+    //background-color: green;
   }
 
 }
@@ -208,13 +231,16 @@
   .rounded-tl(10px);
   .rounded-bl(10px);
 
-  padding: 0;
+  padding: 0!important;
   //margin: 0 10px 0 0px;
   text-align: center;
   flex-basis: unset;
   font-size: 22px!important;
   font-weight: bold;
   flex: 1;
+
+  //width: 100px;
+  //background-color: blue;
 }
 
 
@@ -251,7 +277,7 @@
       height: 25px;
       object-fit: contain;
       margin-right: 15px;
-      border-radius: 50%;
+      //border-radius: 50%;
       float: left;
     }
   }

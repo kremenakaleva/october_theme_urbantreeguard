@@ -1,9 +1,13 @@
 $(window).scroll(animateNumbers);
 var viewed = false;
 
-var documentHasScroll = function() {
-    return window.innerHeight <= document.body.offsetHeight;
-};
+// console.log(window.innerHeight)
+// console.log(document.body.offsetHeight)
+//
+// var documentHasScroll = function() {
+//
+//     return window.innerHeight <= document.body.offsetHeight;
+// };
 // var keepFooter = function(documentHasScroll){
 //     if (!document.getElementById("layout-footer")){
 //         return;
@@ -28,7 +32,8 @@ $(document).ready(function() {
 		divs.slice(i, i+2).wrapAll( '<div class="col-xs" />');
 	}
 
-	if(documentHasScroll){
+
+	if(window.pageYOffset > 20){
 		$("nav").addClass("shrink");
     }
 	$(document).on("scroll", function () {
@@ -194,6 +199,46 @@ $(document).ready(function() {
 	if ($(window).width() >= 1024) {
 		$('.key_1, .key_3, .key_5, .key_7, .key_9, .key_11, .key_13').wrapAll('<div class="col-md-6 col-xs-12" />');
 		$('.key_0, .key_2, .key_4, .key_6, .key_8, .key_10, .key_12').wrapAll('<div class="col-md-6 col-xs-12" />');
+	}
+
+
+
+	$('.gallery-item img').each(function(){
+		$(this).attr('id', 'myImg');
+		$(this).addClass('myImages');
+	});
+
+	$('.gallery-container').after('<div id=\"myModal\" class=\"modal\">\n' +
+		'  <span class=\"close_modal\">&times;</span>\n' +
+		'  <img class=\"modal-content\" id=\"img01\">\n' +
+		'  <div id=\"caption\"></div>\n' +
+		'</div>');
+
+
+	// create references to the modal...
+	var modal = document.getElementById('myModal');
+// to all images -- note I'm using a class!
+	var images = document.getElementsByClassName('myImages');
+// the image in the modal
+	var modalImg = document.getElementById("img01");
+// and the caption in the modal
+	var captionText = document.getElementById("caption");
+
+// Go through all of the images with our custom class
+	for (var i = 0; i < images.length; i++) {
+		var img = images[i];
+		// and attach our click listener for this image.
+		img.onclick = function(evt) {
+			modal.style.display = "block";
+			modalImg.src = this.src;
+			captionText.innerHTML = this.alt;
+		}
+	}
+
+	var span = document.getElementsByClassName("close_modal")[0];
+
+	span.onclick = function() {
+		modal.style.display = "none";
 	}
 
 
