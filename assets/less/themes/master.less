@@ -196,7 +196,12 @@ h1.display-1{
           position: relative;
           background: url("../../assets/images/homepage_illustration.svg") right center no-repeat!important;
           background-position: contain!important;
-            .breakpoint-large-down({
+            //.breakpoint-large-down({
+            //  height: calc(~"100vh - 320px");
+            //  margin-top: 320px;
+            //  //background: none!important;
+            //});
+          .breakpoint-large-down({
               height: 100vh;
               margin-top: 0;
               background: none!important;
@@ -371,6 +376,7 @@ h1.display-1{
   .btn-primary{
     padding: 6px 35px;
     line-height: 36px;
+    white-space: nowrap;
     display: inline-flex;
   }
 
@@ -813,6 +819,25 @@ footer .align-items-center{
   color: @white-color;
 }
 
+
+.ss-result{
+  background: #efefef;
+
+  margin: 30px 0!important;
+  color: @dark-color!important;
+  font-size: 16px;
+  .rounded(4px);
+  border: 1px solid #c1c1c1;
+  padding: 30px;
+
+  .ss-result__url{
+    margin-bottom: 0;
+  }
+
+  hr{
+    display: none;
+  }
+}
 
 
 

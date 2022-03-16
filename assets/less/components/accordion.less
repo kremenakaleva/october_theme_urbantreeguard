@@ -123,7 +123,7 @@
   //width: 95%;
   //background: #e6e6e6;
   //.rounded(10px);
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     width: 100%;
   });
 }
@@ -143,41 +143,19 @@
   .rounded-bl(10px);
   justify-content: space-between;
 
-  //min-height:82px;
-  //width: 100%;
-  //display: -moz-box;
-  //display: -webkit-flexbox;
-  //display: -ms-flexbox;
-  //display: -webkit-flex;
-  //display: -moz-flex;
-  //display: flex;
-  //-webkit-flex-direction: row;
-  //-moz-flex-direction: row;
-  //-ms-flex-direction: row;
-  //flex-direction: row;
+  .breakpoint-large-down({
+    width: 100%;
+  });
 
-
-
-
-  .container_title_and_text{
-    background: #E4E7E7;
-    min-height: 82px;
-    .rounded-tr(10px);
-    .rounded-br(10px);
-    font-weight: bold;
-    font-size: 22px;
-    padding-top: 1.3rem;
-    //flex-basis: 82%;
-    //max-width: 82%;
-
-    //position: relative;
-    //-moz-box-flex: 1;
-    //-webkit-flex: 1;
-    //-moz-flex: 1;
-    //-ms-flex: 1;
-    //flex: 1;
-    //background-color: green;
-  }
+    .container_title_and_text{
+      background: #E4E7E7;
+      min-height: 82px;
+      .rounded-tr(10px);
+      .rounded-br(10px);
+      font-weight: bold;
+      font-size: 22px;
+      padding-top: 1.3rem;
+    }
 
 }
 .working_groups_parent .accordion-content{
@@ -279,6 +257,9 @@
       margin-right: 15px;
       //border-radius: 50%;
       float: left;
+      .breakpoint-small-down({
+        margin-bottom: 10px;
+      });
     }
   }
 

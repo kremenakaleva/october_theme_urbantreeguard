@@ -13,11 +13,14 @@
 
         &.inline {
             flex-direction: row;
+            .breakpoint-small-down({
+              justify-content: space-around!important;
+            });
             .field {
                 margin-top: 0;
                 white-space: nowrap;
 
-                .breakpoint-small-down({
+                .breakpoint-large-down({
                   margin-bottom: 20px;
                 });
             }

@@ -70,7 +70,7 @@ return Redirect::to('/media-center/logo');
 
 	<div class="row card-container-row mb-4 center-xs">
 		{% if record.file_jpg %}
-		<div class="col-md-2 col-xs-12">
+		<div class="col-lg-2 col-md-3 col-xs-12">
 			<div class="card-container text-center">
 				<span class="card_image_container" title="Logo"><img src="{{record.logo_image.path}}" title="{{record.name}}"></span>
 				<a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download .jpg</a>
@@ -78,7 +78,7 @@ return Redirect::to('/media-center/logo');
 		</div>
 		{% endif %}
 		{% if record.file_png %}
-		<div class="col-md-2 col-xs-12">
+		<div class="col-lg-2 col-md-3 col-xs-12">
 			<div class="card-container text-center">
 				<span class="card_image_container" title="Logo"><img src="{{record.logo_image.path}}" title="{{record.name}}"></span>
 				<a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download .png</a>
@@ -86,7 +86,7 @@ return Redirect::to('/media-center/logo');
 		</div>
 		{% endif %}
 		{% if record.file_eps %}
-		<div class="col-md-2 col-xs-12">
+		<div class="col-lg-2 col-md-3 col-xs-12">
 			<div class="card-container text-center">
 				<span class="card_image_container" title="Logo"><img src="{{record.logo_image.path}}" title="{{record.name}}"></span>
 				<a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download .svg</a>

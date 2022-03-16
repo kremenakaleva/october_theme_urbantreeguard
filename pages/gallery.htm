@@ -64,7 +64,7 @@ return Redirect::to('/resources/gallery');
 <div class="container">
 	<div class="row top-xs gallery-container between-md around-xs">
 		{% for i, gallery in galleyList %}
-		<div class="col-md-3 col-xs-12 gallery-item">
+		<div class="col-lg-3 col-md-6 col-xs-12 gallery-item">
 			<img src="{{gallery.cover.path}}">
 			<a
 					href="{{ ''| page }}?{{queries}}&download={{gallery.cover.id}}&file_name={{gallery.cover.file_name|replace({' ': '_'})}}"
