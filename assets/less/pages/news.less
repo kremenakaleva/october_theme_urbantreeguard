@@ -109,6 +109,7 @@ nav:not(.navbar){
 .newslist .col-xs-12,
 .events .eventslist,
 .news .newslist{
+
   display: flex;
   //justify-content: space-between;
   .breakpoint-small-down({
@@ -203,6 +204,9 @@ nav:not(.navbar){
 
 .news .newslist{
   margin-right: 20px;
+  .breakpoint-laptop-down({
+    justify-content: center;
+  });
   .news-item{
     margin-right: 0;
   }
@@ -215,6 +219,9 @@ nav:not(.navbar){
 }
 .events .eventslist{
   margin-right: 20px;
+  .breakpoint-laptop-down({
+    justify-content: center;
+  });
   .news-item{
     margin-right: 0;
     display: flex;

@@ -236,10 +236,12 @@ $(document).ready(function() {
 	}
 
 	var span = document.getElementsByClassName("close_modal")[0];
-
-	span.onclick = function() {
-		modal.style.display = "none";
+	if(span){
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
 	}
+
 
 
 
@@ -316,6 +318,11 @@ function isBreakpointLarge() {
 function showSearchForm(){
 	$('#layout-header').toggleClass('full-width');
 	$('#search').toggle();
+}
+
+function hideSearchForm(){
+	$('#layout-header').toggleClass('full-width');
+	$('#search').hide();
 }
 
 function requestFormLibrary() {

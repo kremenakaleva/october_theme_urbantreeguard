@@ -59,6 +59,7 @@ numberOfLevels = 2
 		<a class="pr p-search medium search-btn"  style="position: fixed; right: 0px;   {% if user %} top: 83px; {% else%} top: 20px;{% endif %}" onclick="showSearchForm();"></a>
 
 		<div id="search" class="search" style="display: none;">
+			<div class="close-search" onclick="hideSearchForm();"></div>
 			<form class="input-group align-items-start" action="{{ url('search')}}" method="get">
 				<input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
 				<button class="btn btn-link pr p-search big text-grey-search-btn" type="submit"></button>

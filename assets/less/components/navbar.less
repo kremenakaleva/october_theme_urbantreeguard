@@ -246,9 +246,48 @@
   .navbar-nav {
     list-style-type: none;
   }
+
+  div.search{
+    background: white;
+  }
 }
 
-.full-width .search {
+.home .full-width .search:not(.header-image) {
+  background: none;
+  position: absolute;
+  top: 95px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.full-width .close-search{
+  background: white url("../../assets/images/close.svg") center no-repeat;
+  background-size: 25px;
+  width: 25px;
+  height: 25px;
+  padding: 0 10px 10px 10px;
+  position: absolute;
+  top: -50px;
+  right: 50px;
+  cursor: pointer;
+  .breakpoint-laptop-down({
+    right: 30px;
+  });
+  .breakpoint-huge-down({
+    background: @dark-color url("../../assets/images/close_white.svg") center no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+    padding: 0 0px 10px 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  });
+}
+
+.full-width .search:not(.header-image) {
   background: @white-color;
   position: absolute;
   top: 95px;
@@ -258,17 +297,15 @@
   left: 0;
   right: 0;
   z-index: 1;
-  .breakpoint-large-down({
-    top: 637px;
-    width: 71%;
-  });
+
   form{
     max-width: 70%;
     float: right;
     margin: 25px 45px 0 0;
-    .breakpoint-small-down({
-      margin: 0;
-      max-width: 100%;
+    .breakpoint-huge-down({
+      max-width: 70%;
+      float: unset;
+      margin: 40% auto;
     });
   }
 
@@ -295,38 +332,32 @@
   &.content-wrapper, &#layout-content{
     top: 0px!important;
   }
-  .breakpoint-large-down({
-    background: none;
-    position: absolute;
-    //top: 91vh;
+  .breakpoint-huge-down({
+    //background: none!important;
+    //position: absolute;
+    ////top: 91vh;
     //width: 70%;
-    //top: 770px;
-    top: 651px;
-    width: 300px;
-    height: 75px;
+    ////top: 770px;
+    //top: 608px;
+    //width: 300px;
+    //height: 75px;
+    //left: 0;
+    //right: 0;
+    //z-index: 1;
+    //margin:  0 auto;
+    background: @dark-color!important;
+    position: absolute;
+    top: 0!important;
+    width: 100%;
+    height: 100vh;
+    /* max-width: 1600px; */
     left: 0;
     right: 0;
     z-index: 1;
-    margin:  0 auto;
   })
 }
 
-.home .full-width .search {
-  background: none;
-  position: absolute;
-  top: 95px;
-  width: 100%;
-  height: 75px;
-  /* max-width: 1600px; */
-  left: 0;
-  right: 0;
-  z-index: 1;
-  .breakpoint-large-down({
-    top: 637px;
-    width: 71%;
-  });
 
-}
 
 nav .pr.p-search.large.search-btn{
   .breakpoint-large-down({
@@ -337,7 +368,7 @@ nav .pr.p-search.large.search-btn{
 .search-btn{
   margin-right: 20px;
   cursor: pointer;
-  .breakpoint-large-down({
+  .breakpoint-huge-down({
     display: none!important;
     order: 1;
   });
