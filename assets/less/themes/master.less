@@ -140,7 +140,7 @@ h1.display-1{
     }
 
     .jumbotron{
-      max-width: 40%;
+      max-width: 45%;
       //max-width: 1057px;
       padding: 0 60px;
       margin: 0;
@@ -195,7 +195,7 @@ h1.display-1{
           margin-top: 75px;
           position: relative;
           background: url("../../assets/images/homepage_illustration.svg") right center no-repeat!important;
-          background-position: contain!important;
+          background-size: 50%!important;
           .breakpoint-large-down({
               height: 100vh;
               margin-top: 0;
@@ -649,7 +649,7 @@ footer .align-items-center{
     &.left {
       background: @white-color url(../../assets/images/login-illustration.svg) no-repeat;
       background-position: center;
-      background-size: 33%;
+      background-size: 33% 80%;
       left: 0;
       h1{
         padding-left: 20%;
@@ -677,9 +677,29 @@ footer .align-items-center{
       .breakpoint-small-down({
         width: 80%;
         top: 55%!important;
-      })
+
+      });
+      p{
+        .breakpoint-small-down({
+          text-align: left;
+          padding-left: 10px;
+        });
+      }
+    }
+
+    .forgot_link{
+      float: right;
+      .breakpoint-small-down({
+        float: left;
+      });
     }
   }
+}
+
+.no-padding{
+  .breakpoint-small-down({
+    padding: 0!important;
+  });
 }
 
 .login{
