@@ -38,6 +38,7 @@
 
     .navbar-brand {
       display: flex;
+      z-index: 5;
       text-indent: -9999px;
       flex-basis: 255px;
       height: 221px;
@@ -53,6 +54,7 @@
         order: 1;
         flex-basis: 155px;
         height: 151px;
+        z-index: 0;
       });
       .breakpoint-small-down({
         flex-basis: 100%;
@@ -63,9 +65,6 @@
 
     .navbar-nav{
       list-style-type: none;
-      //position: fixed;
-      //top: 14px;
-      //right: 72px;
       background: @white-color;
     }
  
@@ -153,6 +152,18 @@
             }
         }
     }
+
+  div.search{
+    background: none!important;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.5s ease-in-out; /* Opera */
+    -ms-transition: all 0.5s ease-in-out; /* Explorer 10 */
+    .breakpoint-huge-down({
+      background: @dark-color!important;
+    });
+  }
 
 
     .breakpoint-huge({
@@ -248,12 +259,15 @@
   }
 
   div.search{
-    background: white;
+    background: white!important;
+    .breakpoint-huge-down({
+      background: @dark-color!important;
+    });
   }
 }
 
 .home .full-width .search:not(.header-image) {
-  background: none;
+  //background: none;
   position: absolute;
   top: 95px;
   width: 100%;
@@ -268,12 +282,15 @@
   width: 60px;
   height: 50px;
   //padding: 0 0px 10px 10px;
-  position: absolute;
-  top: -50px;
+  //position: absolute;
+  //top: -50px;
+  //right: 20px;
+  position: fixed;
+  top: 45px;
   right: 20px;
   cursor: pointer;
   .breakpoint-laptop-down({
-    right: 30px;
+    //right: 30px;
   });
   .breakpoint-huge-down({
     background: @dark-color url("../../assets/images/close_white.svg") center no-repeat;
@@ -288,7 +305,7 @@
 }
 
 .full-width .search:not(.header-image) {
-  background: @white-color;
+  background: @white-color!important;
   position: absolute;
   top: 95px;
   width: 100%;
@@ -333,18 +350,6 @@
     top: 0px!important;
   }
   .breakpoint-huge-down({
-    //background: none!important;
-    //position: absolute;
-    ////top: 91vh;
-    //width: 70%;
-    ////top: 770px;
-    //top: 608px;
-    //width: 300px;
-    //height: 75px;
-    //left: 0;
-    //right: 0;
-    //z-index: 1;
-    //margin:  0 auto;
     background: @dark-color!important;
     position: absolute;
     top: 0!important;
@@ -355,6 +360,10 @@
     right: 0;
     z-index: 1;
   })
+}
+
+.home .full-width .navbar:not(.shrink) .search:not(.header-image){
+  background: none!important;
 }
 
 
@@ -455,8 +464,7 @@ nav .pr.p-search.large.search-btn{
     background: @white-color;
   }
 
-  #menu
-  {
+  #menu{
     position: absolute;
     width: 100vw;
     height: 100vh;

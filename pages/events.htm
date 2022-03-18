@@ -38,7 +38,7 @@ function onStart(){
 			)->where('slug', $this->param('slug'))->first();
 	}
 
-	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(20);
+	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(15);
 
 		$this['slug'] = $this->param('slug');
 }
@@ -87,7 +87,7 @@ function onStart(){
 
 			{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
 
-			<div class="col-xs-12 col-md-3 news-item item-{{entry.slug}}">
+			<div class="col-xs-12 col-md-3 news-item">
 				<div class="row news_column">
 					{% if entry.cover_image %}
 					<a class="news-image col-xs-12 center-xs" href="{{url}}">
@@ -117,10 +117,11 @@ function onStart(){
 
 			{% endfor %}
 
-			<div class="row container">
-				{{ entries.fragment('listView').render|raw }}
-			</div>
+		<div class="row container width100">
+			{{ entries.fragment('gridView').render|raw }}
+		</div>
 	</div>
+
 </div>
 </div>
 	{% else %}
