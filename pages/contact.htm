@@ -30,7 +30,7 @@ function onStart(){
 						{% if profile.avatar %}
 						<img alt="{{ profile.names }}" src="{{profile.avatar.getThumb(228,274, { mode : 'crop' } )}}">
 						{% else %}
-						<img alt="{{ profile.names }}" src="{{ 'CMS_icons_avatar.svg'|media }}">
+						<img alt="{{ profile.names }}" src="{{ 'person.svg'|media }}">
 						{% endif %}
 					</div>
 				</div>
@@ -40,9 +40,9 @@ function onStart(){
 					<div class="contact-info">{{profile.department}}</div>
 
 					<div class="profile-description">
-						<div class="contact-info"><i class="pr small p-mail"></i>{{profile.email}}</div>
-						<div class="contact-info"><i class="pr normal p-phone"></i>{{profile.phone}}</div>
-						<div class="contact-info"><i class="pr normal p-location"></i>{{profile.address}}</div>
+						{% if profile.email %}<div class="contact-info"><i class="pr small p-mail"></i>{{profile.email}}</div>{% endif %}
+						{% if profile.phone %}<div class="contact-info"><i class="pr normal p-phone"></i>{{profile.phone}}</div>{% endif %}
+						{% if profile.address %}<div class="contact-info"><i class="pr normal p-location"></i>{{profile.address}}</div>{% endif %}
 					</div>
 
 					<a class="contact-mail" href="mailto:l.penev@pensoft.net"></a>

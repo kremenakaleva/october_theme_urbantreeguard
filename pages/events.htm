@@ -49,17 +49,63 @@ function onStart(){
 <div class="container-fluid partners_background">
 <div class="container">
 	<div class="tabs">
-		<a class="calendar_vew" href="#calendarView">Calendar view</a>
 		<a class="grid_vew" href="#gridView">Grid view</a>
+		<a class="calendar_vew" href="#calendarView">Calendar view</a>
 		<a class="list_vew" href="#listView">List view</a>
 	</div>
 	<!--tabs content	-->
+
+	<div class="row eventslist " id="gridView">
+		{% if entries.count() %}
+		{% for entry in entries %}
+
+		{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
+
+		<div class="col-xs-12 col-md-3 news-item">
+			<div class="row news_column">
+				{% if entry.cover_image %}
+				<a class="news-image col-xs-12 center-xs" href="{{url}}">
+					<img class="news-img-top" src="{{entry.cover_image.getThumb(506,311, { mode : 'crop' } )}}">
+				</a>
+				{% endif %}
+
+
+				<div class="news-container col-xs-12">
+					{% if entry.event_date %}
+					<div class="event-date">
+						{{entry.event_date}}
+						{{entry.event_time}}
+					</div>
+					{% endif %}
+
+					{% if entry.place %}
+					<div class="event-place"> {{ entry.place }}</div>
+					{% endif %}
+					<div class="news-title">
+						<h3 class="card-title"><a href="{{url}}">{{entry.title}}</a></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		{% endfor %}
+
+		<div class="row container width100">
+			{{ entries.fragment('gridView').render|raw }}
+		</div>
+		{% else %}
+			<h1 class="display-1">Stay tuned for upcoming events!</h1>
+		{% endif %}
+	</div>
 
 	<div class="row" id="calendarView">
 		{% component 'calendar' %}
 	</div>
 	<div class="row" id="listView">
+		{% if entries.count() %}
 		<div class="events_list_container">
+
 			{% for entry in entries %}
 			{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
 
@@ -75,52 +121,17 @@ function onStart(){
 			</div>
 
 			{% endfor %}
-		</div>
-		<div class="row container">
-			{{ entries.fragment('listView').render|raw }}
-		</div>
-
-	</div>
-
-	<div class="row eventslist " id="gridView">
-			{% for entry in entries %}
-
-			{% set url = entry.url ?  entry.url : '/events/'~entry.slug %}
-
-			<div class="col-xs-12 col-md-3 news-item">
-				<div class="row news_column">
-					{% if entry.cover_image %}
-					<a class="news-image col-xs-12 center-xs" href="{{url}}">
-						<img class="news-img-top" src="{{entry.cover_image.getThumb(506,311, { mode : 'crop' } )}}">
-					</a>
-					{% endif %}
-
-
-					<div class="news-container col-xs-12">
-						{% if entry.event_date %}
-						<div class="event-date">
-							{{entry.event_date}}
-							{{entry.event_time}}
-						</div>
-						{% endif %}
-
-						{% if entry.place %}
-						<div class="event-place"> {{ entry.place }}</div>
-						{% endif %}
-						<div class="news-title">
-							<h3 class="card-title"><a href="{{url}}">{{entry.title}}</a></h3>
-						</div>
-					</div>
-				</div>
+			<div class="row container width100">
+				{{ entries.fragment('listView').render|raw }}
 			</div>
 
-
-			{% endfor %}
-
-		<div class="row container width100">
-			{{ entries.fragment('gridView').render|raw }}
 		</div>
+		{% else %}
+		<h1 class="display-1">Stay tuned for upcoming events!</h1>
+		{% endif %}
+
 	</div>
+
 
 </div>
 </div>
