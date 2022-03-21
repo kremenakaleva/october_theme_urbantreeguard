@@ -33,17 +33,17 @@ $this['countries'] =  Country::where('is_enabled', true)->get();
 
 function onFilterRecords(){
 if(post('country')){
-if(post('category')){
-$this['profiles'] = Profiles::where('category_id', post('category'))->where('country_id', post('country'))->whereIn('category_id', [1,2,3,4])->get();
+	if(post('category')){
+			$this['profiles'] = Profiles::where('position','ILIKE','%'.post('category').'%')->where('country_id', post('country'))->whereIn('category_id', [1,2,3,4])->get();
+		}else{
+			$this['profiles'] = Profiles::where('country_id', post('country'))->whereIn('category_id', [1,2,3,4])->get();
+	}
 }else{
-$this['profiles'] = Profiles::where('country_id', post('country'))->whereIn('category_id', [1,2,3,4])->get();
-}
-}else{
-if(post('category')){
-$this['profiles'] = Profiles::where('category_id', post('category'))->whereIn('category_id', [1,2,3,4])->get();
-}else{
-$this['profiles'] = Profiles::whereIn('category_id', [1,2,3,4])->get();
-}
+	if(post('category')){
+		$this['profiles'] = Profiles::where('position','ILIKE','%'.post('category').'%')->whereIn('category_id', [1,2,3,4])->get();
+	}else{
+		$this['profiles'] = Profiles::whereIn('category_id', [1,2,3,4])->get();
+	}
 }
 
 $this['country'] = new class {
@@ -114,16 +114,16 @@ return [
 				</div>
 				<div class="col-lg-1 col-xs field">
 					<input type="hidden" name="category">
-					<button type="button" value="1" class="btn btn-primary green_btn">WG1</button>
+					<button type="button" value="wg1" class="btn btn-primary green_btn">WG1</button>
 				</div>
 				<div class="col-lg-1 col-xs field">
-					<button type="button" value="2" class="btn btn-primary green_btn">WG2</button>
+					<button type="button" value="wg2" class="btn btn-primary green_btn">WG2</button>
 				</div>
 				<div class="col-lg-1 col-xs field">
-					<button type="button" value="3" class="btn btn-primary green_btn">WG3</button>
+					<button type="button" value="wg3" class="btn btn-primary green_btn">WG3</button>
 				</div>
 				<div class="col-lg-1 col-xs field">
-					<button type="button" value="4" class="btn btn-primary green_btn">WG4</button>
+					<button type="button" value="wg4" class="btn btn-primary green_btn">WG4</button>
 				</div>
 				<div class="col-lg-1 col-xs field">
 					<a href="javascript:void(0);" onclick="location.reload();" class="btn btn-primary green_btn">&#x21bb;</a>
