@@ -117,18 +117,25 @@ h1.display-1{
               color: @default-color;
               text-transform: uppercase;
               font-weight: bold;
-              .breakpoint-small-down({
-                  font-size: 63px;
-              });
-              .breakpoint-huge-down({
-                width: auto!important;
-              });
               .breakpoint-laptop-down({
                 font-size: 60px;
                 line-height: 60px;
                 margin-bottom: 10px;
-                margin-top: 20px;
+                margin-top: 70px;
+                white-space: nowrap;
               });
+
+              .breakpoint-huge-down({
+                width: auto!important;
+                margin-top: 20px;
+                white-space: unset;
+              });
+              .breakpoint-small-down({
+                font-size: 63px;
+                margin-top: 20px;
+                white-space: unset;
+              });
+
             }
           .breakpoint-small-down({
               width: 85%;
