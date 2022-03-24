@@ -28,7 +28,7 @@ return WorkingGroup::where('id', $id)->first();
 }
 };
 
-$this['countries'] =  Country::where('is_enabled', true)->get();
+$this['countries'] =  Country::where('is_enabled', true)->orderBy('name', 'asc')->get();
 }
 
 function onFilterRecords(){
