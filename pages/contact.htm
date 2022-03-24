@@ -6,8 +6,6 @@ robot_index = "index"
 robot_follow = "follow"
 
 [siteSearchInclude]
-
-
 ==
 <?php
 use Pensoft\Cardprofiles\Models\Profiles;
@@ -25,7 +23,7 @@ function onStart(){
 		<div class="col-xs-12 col-md-4">
 			<div class="row profile-container">
 				<div class="col-xs-12"><h1 class="display-1">{{profile.names}}</h1></div>
-				<div class="col-xs-12 col-md-6">
+				<div class="col-xs-12 col-md-5">
 					<div class="profile-image person">
 						{% if profile.avatar %}
 						<img alt="{{ profile.names }}" src="{{profile.avatar.getThumb(228,274, { mode : 'crop' } )}}">
@@ -34,7 +32,7 @@ function onStart(){
 						{% endif %}
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-6">
+				<div class="col-xs-12 col-md-7">
 					<div class="position">{{profile.position}}</div>
 
 					<div class="contact-info">{{profile.department}}</div>
