@@ -30,7 +30,6 @@ function onStart(){
 
 	$this['countries'] =  Country::where('is_enabled', true)->get();
 }
-
 ?>
 ==
 <div class="container-fluid partners_background">
@@ -54,7 +53,7 @@ function onStart(){
 			{% for partner in partners %}
 			<div class="col-xs partner-item">
 				<a href="{{partner.instituion_url}}" class="partner_link" target="_blank">
-					<img alt="{{ partner.institution }}" src="{{partner.cover.thumb(162,162,{'mode':'fit'})}}">
+					<img alt="{{ partner.instituion }}" src="{{partner.cover.thumb(162,162,{'mode':'fit'})}}" title="{{ partner.instituion }} - {{ partner.content|striptags }}">
 				</a>
 			</div>
 			{% endfor %}
@@ -63,4 +62,3 @@ function onStart(){
 	</div>
 
 </div>
-
