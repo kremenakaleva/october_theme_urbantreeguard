@@ -13,10 +13,12 @@ language = "en"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
+use RainLab\User\Facades\Auth;
 
 function onStart(){
 
     if($this->param('slug')){
+		if(Auth::check()){
 			$this['entry'] =  Entry::select(
 			'*',
 			'title',
@@ -36,11 +38,18 @@ function onStart(){
 
 
 			)->where('slug', $this->param('slug'))->first();
+		}else{
+			return Redirect::to('/events');
+		}
+
 	}
 
+if(Auth::check()){
 	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(15);
-
-		$this['slug'] = $this->param('slug');
+}else{
+	$this['entries'] = Entry::where('is_internal', false)->orderBy('start', 'desc')->paginate(15);
+}
+	$this['slug'] = $this->param('slug');
 }
 ?>
 ==
