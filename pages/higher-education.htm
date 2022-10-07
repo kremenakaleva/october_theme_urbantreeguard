@@ -1,0 +1,24 @@
+url = "/higher-education"
+layout = "default"
+title = "Higher education"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "higher-education"
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+
+[publicDocumentsTree]
+typeId = 1
+==
+{% component 'siteSearchInclude' %}<div class="container-fluid banner " style="background-color:transperant;">
+	<div class="container external-documents">
+				<h1 class="display-1">Higher education</h1>
+				{% component 'jumbotron' %}
+
+
+		{% component 'publicDocumentsTree' %}
+			</div>
+</div>

@@ -1,0 +1,23 @@
+url = "/professional-education"
+layout = "default"
+title = "Professional education"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "professional-education"
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+
+[publicDocumentsTree]
+typeId = 2
+==
+{% component 'siteSearchInclude' %}<div class="container-fluid banner " style="background-color:transperant;">
+	<div class="container external-documents">
+				<h1 class="display-1">Professional education</h1>
+				{% component 'jumbotron' %}
+				{% component 'publicDocumentsTree' %}
+
+			</div>
+</div>

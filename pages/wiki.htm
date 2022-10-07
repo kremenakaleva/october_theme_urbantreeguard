@@ -22,9 +22,12 @@ title = 0
 background = "#ffffff"
 templates = "template1"
 description_limit = 0
+
+[publicDocumentsTree]
+typeId = 4
 ==
 {% component 'siteSearchInclude' %}
-<div class="container">
+<div class="container external-documents">
     <div class="row top-xs">
         <div class="col-md-6 col-xs-12">
              <div class="intro">
@@ -35,6 +38,11 @@ description_limit = 0
              <div class="background">
                 {% component 'background' %}
              </div>
+        </div>
+    </div>
+    <div class="row top-xs">
+        <div class="col-xs-12">
+            {% component 'publicDocumentsTree' %}
         </div>
     </div>
     
