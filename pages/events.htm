@@ -10,6 +10,7 @@ default = "true"
 limit = 10
 category = "null"
 language = "en"
+redirect_to_detailed_page = "false"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
@@ -53,8 +54,7 @@ if(Auth::check()){
 }
 ?>
 ==
-
-	{% if not slug %}
+{% if not slug %}
 <div class="container-fluid partners_background">
 <div class="container">
 	<div class="tabs">
@@ -83,7 +83,6 @@ if(Auth::check()){
 					{% if entry.event_date %}
 					<div class="event-date">
 						{{entry.event_date}}
-						{{entry.event_time}}
 					</div>
 					{% endif %}
 
@@ -125,7 +124,7 @@ if(Auth::check()){
 				</div>
 				<div class="row">
 					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
-					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_time}}</div> <div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}">{{entry.title}}</a></div>
+					<div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}">{{entry.title}}</a></div>
 				</div>
 			</div>
 
@@ -183,7 +182,6 @@ if(Auth::check()){
 				{% if entry.event_date %}
 				<div class="event-date">
 					 {{entry.event_date}}
-					{{entry.event_time}}
 				</div>
 				{% endif %}
 
