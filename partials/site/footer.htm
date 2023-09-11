@@ -91,20 +91,37 @@ theme = "dark-bottom"
 
 </div>
 <div class="container-fluid border-box black-background">
-	<div class="row nowrap text-light d-flex justify-content-between align-items-center flex-column flex-lg-row dark-background">
-		{% if (footer_funds_flag != null or footer_funds_text != '') %}
-		<div class="funding flex-column my-1 my-lg-0 flex-lg-row px-1 align-items-center col-sm-1 col-xs-12">
-			{% if footer_funds_flag %}
-			<img class="text mr-0" style="height:50px;" src="{{ footer_funds_flag }}"/>
-			{% endif %}
+    <div class="row nowrap text-light d-flex justify-content-between align-items-center flex-column flex-lg-row dark-background">
+        {% if (footer_funds_flag != null or footer_funds_text != '') %}
+        <div class="funding col-md-2 col-xs-12">
+            <img style="height: 100px;" src="{{'cost_logo-white.svg'|media}}"/>
+            {% if footer_funds_flag %}
+            <div class="funds_flag">
+            <img src="{{ footer_funds_flag }}"/> Funded by<br>the European Union
+            </div>
+            {% endif %}
 
-		</div>
-		{% endif %}
-		<div class="cost flex-column my-1 my-lg-0 flex-lg-row px-1 align-items-center col-sm col-xs-12">
-			<img class="text mr-0" style="height:50px;" src="{{'cost_logo-white.svg'|media}}"/> CA20132
-		</div>
 
-		<div class="col-lg-2 col-sm-2 col-xs-12 center-xs"><a style="flex:0 0 auto;" href="/privacy-policy">Privacy Policy</a></div>
-		<div class="col-lg-3 col-sm-4 col-xs-12 end-sm center-xs"><div class="powered-by my-1 my-lg-0 px-1 align-items-center end-sm center-xs"><span>Designed and powered by <a href="https://pensoft.net/" target="_blank">Pensoft</a></span></div></div>
-	</div>
+        </div>
+        {% endif %}
+
+        <div class="cost col-md-4 col-xs-12">
+            <div class="title">COST</div>
+            COST (European Cooperation in Science and Technology) is a funding agency for research and innovation networks. Our Actions help connect research initiatives across Europe and enable scientists to grow their ideas by sharing them with their peers. This boosts their research, career and innovation.
+            <div class="links">
+                <a href="https://www.cost.eu" tagreg="_blank">www.cost.eu</a>
+                <a style="flex:0 0 auto;" href="/privacy-policy">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="cost action_details col-md-2 col-xs-12">
+            <div class="title">Action Details</div>
+            MoU - 072/21<br/>
+            CSO Approval date - 25/05/2021<br/>
+            Start date - 26/10/2021<br/>
+            End date - 25/10/2025<br/>
+        </div>
+
+        <div class="col-md-2 col-xs-12"><div class="powered-by my-1 my-lg-0 px-1 align-items-center end-sm center-xs"><span>Designed and powered by <a href="https://pensoft.net/" target="_blank">Pensoft</a></span></div></div>
+    </div>
 </div>
